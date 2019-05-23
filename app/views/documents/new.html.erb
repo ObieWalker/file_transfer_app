@@ -1,0 +1,26 @@
+<div class="container">   
+  <% if !@documents.errors.empty? %>   
+    <div>     
+        <ul>   
+          <% @document.errors.full_messages.each do |msg| %>   
+              <li><%= msg %></li>   
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form_for @document, html: { multipart: true } do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :document_name %>
+        <br><br>
+        <%= f.label :document_url %>
+        <%= f.file_field :document_url %>
+        <br><br>
+        <%= f.label :document_description %>
+        <%= f.text_area :document_description %>
+        <br>
+        <%= f.submit "Save" %>
+    <% end %>
+  </div>
+</div>
